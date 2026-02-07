@@ -1,0 +1,21 @@
+mgf_authority:
+  project: stc-academy-airline-identity-risk-lab
+  domain: airline_identity_risk
+  authority: MGF-AUTHORITY-ALL
+
+  intent:
+    - Demonstrate airline identity-driven risk
+    - Prove read-only, deterministic risk intelligence
+    - Support STC AI reasoning and demos
+
+  constraints:
+    - no_enforcement: true
+    - no_mutation: true
+    - no_production_data: true
+    - read_only_access: true
+
+  consumers:
+    - STC-Aegis-Air
+    - STC-Shield
+    - STC-Copilot
+    - STC-AI
