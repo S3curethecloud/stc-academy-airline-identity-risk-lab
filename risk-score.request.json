@@ -1,0 +1,29 @@
+{
+  "context": {
+    "industry": "airline",
+    "lifecycle_stage": "loyalty_redemption",
+    "timestamp": "2026-02-06T18:21:00Z"
+  },
+  "entities": {
+    "passenger_identity": { "id": "pax_9f31", "tenure_days": 420 },
+    "loyalty_account": { "id": "loy_7712", "balance": 182000 },
+    "device": { "id": "dev_aa91", "novelty": true },
+    "agent_identity": null
+  },
+  "events": [
+    {
+      "type": "login_attempt",
+      "signals": {
+        "credential_velocity_anomaly": 0.71,
+        "device_novelty_score": 0.88
+      }
+    },
+    {
+      "type": "miles_redeemed",
+      "signals": {
+        "redemption_timing_anomaly": 0.92,
+        "value_spike_deviation": 0.81
+      }
+    }
+  ]
+}

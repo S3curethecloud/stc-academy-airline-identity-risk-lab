@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "required": ["id", "title", "artifact_type", "domain", "anchors"],
+  "properties": {
+    "id": { "type": "string" },
+    "title": { "type": "string" },
+    "artifact_type": { "type": "string" },
+    "domain": { "type": "string" },
+    "anchors": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "version": { "type": "string" },
+    "composed_of": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

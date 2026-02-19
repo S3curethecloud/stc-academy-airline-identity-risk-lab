@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>STC Shield — Airline Risk Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #0b0f14; color: #e6e6e6; }
+    .card { background: #141a22; padding: 20px; margin: 20px; border-left: 4px solid gold; }
+    h2 { margin-top: 0; }
+    .severity-HIGH { color: orange; }
+    .severity-CRITICAL { color: red; }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h2>Identity Risk View</h2>
+  <div id="identity"></div>
+</div>
+
+<div class="card">
+  <h2>Lifecycle Risk Timeline</h2>
+  <ul id="timeline"></ul>
+</div>
+
+<div class="card">
+  <h2>Attack / Abuse Path</h2>
+  <ul id="drivers"></ul>
+</div>
+
+<script>
+async function loadScenario() {
+  const res = await fetch("/risk/score", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ scenario: "loyalty-ato" })
+  });
+  const data = await res.json();
+
+  document.getElementById("identity").innerHTML = `
+    <strong>${data.entity_type}</strong> (${data.entity_id})<br/>
+    Risk Score: ${data.risk_score}<br/>
+    Severity: <span class="severity-${data.severity}">${data.severity}</span><br/>
+    Recommended Action: ${data.recommended_action}
+  `;
+
+  data.timeline.forEach(t => {
+    const li = document.createElement("li");
+    li.textContent = `${t.event}: ${t.note}`;
+    document.getElementById("timeline").appendChild(li);
+  });
+
+  data.drivers.forEach(d => {
+    const li = document.createElement("li");
+    li.textContent = d;
+    document.getElementById("drivers").appendChild(li);
+  });
+}
+
+loadScenario();
+</script>
+
+</body>
+</html>
