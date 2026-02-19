@@ -1,3 +1,4 @@
+`
 ┌──────────────────────────────┐
 │ Identity: LOY-12345          │
 │ Type: Loyalty Account        │
@@ -11,3 +12,4 @@
 │ Recommended Action           │
 │ STEP_UP                      │
 └──────────────────────────────┘
+`
